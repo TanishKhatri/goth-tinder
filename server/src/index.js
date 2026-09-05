@@ -37,16 +37,21 @@ app.use('/api/reports', reportRoutes);
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 
-// Single-service production deployment (e.g. Render): serve the built Vite
-// client from the same origin so /api + Socket.IO need no extra config.
+// Single-service deployment (e.g. Render): serve the built Vite client from
+// the same origin so /api + Socket.IO need no extra config. Served whenever
+// the bundle exists — not gated on NODE_ENV so a missing env var can't
+// silently leave you with an API-only URL.
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const clientDist = path.resolve(__dirname, '../../client/dist');
-if (config.nodeEnv === 'production' && fs.existsSync(clientDist)) {
+if (fs.existsSync(clientDist)) {
+  console.log(`Serving client from ${clientDist}`);
   app.use(express.static(clientDist));
   app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api')) return next();
     res.sendFile(path.join(clientDist, 'index.html'));
   });
+} else {
+  console.log('Client bundle not found — serving API only. Run: npm run build --workspace=client');
 }
 
 app.use(notFound);
