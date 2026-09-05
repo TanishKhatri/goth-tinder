@@ -1,5 +1,8 @@
 import express from 'express';
 import { createServer } from 'http';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
@@ -33,6 +36,18 @@ app.use('/api/matches', matchRoutes);
 app.use('/api/reports', reportRoutes);
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
+
+// Single-service production deployment (e.g. Render): serve the built Vite
+// client from the same origin so /api + Socket.IO need no extra config.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const clientDist = path.resolve(__dirname, '../../client/dist');
+if (config.nodeEnv === 'production' && fs.existsSync(clientDist)) {
+  app.use(express.static(clientDist));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
