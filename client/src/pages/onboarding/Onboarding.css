@@ -1,0 +1,323 @@
+.onboarding-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.onboarding-progress {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  overflow-x: auto;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.progress-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(122, 31, 43, 0.3);
+  background: var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-bone-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: 2;
+}
+
+.progress-step.completed .progress-dot {
+  background: linear-gradient(135deg, var(--color-blood), var(--color-amethyst));
+  border-color: var(--color-blood);
+  color: var(--color-bone);
+  box-shadow: 0 0 12px rgba(122, 31, 43, 0.4);
+}
+
+.progress-step.active .progress-dot {
+  border-color: var(--color-blood);
+  box-shadow: 0 0 16px rgba(122, 31, 43, 0.3);
+}
+
+.progress-label {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-bone-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.progress-step.completed .progress-label,
+.progress-step.active .progress-label {
+  color: var(--color-blood-light);
+  font-weight: 500;
+}
+
+.progress-line {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: rgba(122, 31, 43, 0.2);
+  z-index: 0;
+}
+
+.progress-line.completed {
+  background: linear-gradient(90deg, var(--color-blood), var(--color-amethyst));
+}
+
+.onboarding-card {
+  padding: 2rem;
+}
+
+.onboard-step {
+  border: none;
+  padding: 0;
+}
+
+.step-header {
+  margin-bottom: 2rem;
+}
+
+.step-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-header p {
+  color: var(--color-bone-dim);
+}
+
+.char-count {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--color-bone-muted);
+  margin-top: 0.5rem;
+}
+
+.interests-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.interest-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border: 2px solid rgba(122, 31, 43, 0.2);
+  border-radius: var(--radius-full);
+  background: var(--color-charcoal);
+  color: var(--color-bone-dim);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.interest-chip:hover {
+  border-color: var(--color-blood);
+  color: var(--color-blood-light);
+}
+
+.interest-chip.selected {
+  border-color: var(--color-blood);
+  background: rgba(122, 31, 43, 0.15);
+  color: var(--color-blood);
+}
+
+.interest-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.interest-count {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-blood-light);
+  font-weight: 500;
+}
+
+.photos-dropzone {
+  border: 2px dashed rgba(122, 31, 43, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.photos-dropzone:hover {
+  border-color: var(--color-blood);
+  background: rgba(122, 31, 43, 0.05);
+}
+
+.dropzone-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  color: var(--color-bone-dim);
+}
+
+.dropzone-empty svg {
+  color: var(--color-blood-dim);
+}
+
+.dropzone-empty span {
+  font-size: 0.875rem;
+  color: var(--color-bone-muted);
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.photo-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid rgba(122, 31, 43, 0.2);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(10, 10, 13, 0.9);
+  color: var(--color-bone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.photo-item:hover .photo-remove {
+  opacity: 1;
+}
+
+.photo-remove:hover {
+  background: var(--color-blood);
+  color: var(--color-bone);
+}
+
+.photo-item.uploading img,
+.photo-editor-item.uploading img {
+  opacity: 0.45;
+}
+
+.photo-uploading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.2em;
+  color: var(--color-bone);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.photo-add-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: 2px dashed rgba(122, 31, 43, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--color-bone-dim);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.photo-add-slot:hover {
+  border-color: var(--color-blood);
+  color: var(--color-blood-light);
+  background: rgba(122, 31, 43, 0.05);
+}
+
+.photo-add-slot span {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.location-hint {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(122, 31, 43, 0.05);
+  border: 1px solid rgba(122, 31, 43, 0.15);
+  border-radius: var(--radius-md);
+}
+
+.location-hint p {
+  font-size: 0.875rem;
+  color: var(--color-bone-dim);
+  line-height: 1.6;
+}
+
+.onboarding-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(122, 31, 43, 0.15);
+}
+
+.range-input {
+  width: 100%;
+  accent-color: var(--color-blood);
+}
+
+.range-value {
+  text-align: right;
+  font-size: 0.875rem;
+  color: var(--color-blood-light);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .onboarding-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .onboarding-progress {
+    padding: 0;
+  }
+  
+  .progress-label {
+    font-size: 0.65rem;
+  }
+}

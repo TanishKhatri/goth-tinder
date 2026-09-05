@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+
+# Environment files (never commit real secrets)
+.env
+server/.env
+client/.env
+*.local
+
+# Test artifacts / local cookies
+cookies.txt
+*.log
+/tmp/
+
+.DS_Store

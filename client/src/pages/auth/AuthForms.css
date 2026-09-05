@@ -1,0 +1,240 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+.auth-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.auth-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 31, 43, 0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(60px);
+  animation: auth-orb-pulse 6s ease-in-out infinite;
+}
+
+@keyframes auth-orb-pulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  z-index: 10;
+}
+
+.auth-card {
+  padding: 2.5rem 2rem;
+}
+
+.auth-header {
+  margin-bottom: 2rem;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--color-bone);
+}
+
+.auth-logo svg {
+  width: 36px;
+  height: 36px;
+  color: var(--color-blood);
+}
+
+.auth-logo span {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--color-bone-dim);
+  margin-bottom: 2rem;
+}
+
+.form-step {
+  border: none;
+  padding: 0;
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-blood), var(--color-amethyst));
+  color: var(--color-bone);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.step-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-header p {
+  color: var(--color-bone-dim);
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.75rem;
+  border: 2px solid rgba(122, 31, 43, 0.2);
+  border-radius: var(--radius-md);
+  background: var(--color-charcoal);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.option-card:hover {
+  border-color: var(--color-blood);
+  background: rgba(122, 31, 43, 0.1);
+}
+
+.option-card.selected {
+  border-color: var(--color-blood);
+  background: rgba(122, 31, 43, 0.15);
+  box-shadow: 0 0 0 2px rgba(122, 31, 43, 0.2);
+}
+
+.option-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-bone);
+  text-transform: capitalize;
+}
+
+.form-actions {
+  margin-top: 2rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: var(--color-bone);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0 1.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-bone-dim);
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-blood);
+}
+
+.checkbox-custom {
+  display: none;
+}
+
+.forgot-link {
+  font-size: 0.875rem;
+  color: var(--color-blood-light);
+}
+
+.forgot-link:hover {
+  color: var(--color-gold);
+}
+
+.divider {
+  margin: 1.5rem 0;
+}
+
+.auth-footer {
+  text-align: center;
+  color: var(--color-bone-dim);
+  font-size: 0.9375rem;
+}
+
+.auth-footer a {
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}

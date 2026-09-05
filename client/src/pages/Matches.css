@@ -1,0 +1,257 @@
+.matches-page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  color: var(--color-bone-dim);
+}
+
+.matches-loading {
+  padding: 1rem;
+}
+
+.skeleton-match {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-match-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.matches-empty {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.empty-icon {
+  color: var(--color-blood-dim);
+  margin-bottom: 1.5rem;
+}
+
+.matches-empty h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.matches-empty p {
+  color: var(--color-bone-dim);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.matches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.match-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.match-item:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(122, 31, 43, 0.3);
+}
+
+.match-item.expanding {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.match-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+}
+
+.match-link:focus-visible {
+  outline: 2px solid var(--color-blood);
+  outline-offset: 2px;
+}
+
+.match-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.match-avatar img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(122, 31, 43, 0.2);
+}
+
+.blocked-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-blood);
+  color: var(--color-bone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-void);
+}
+
+.match-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.match-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.match-name {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--color-bone);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match-time {
+  font-size: 0.75rem;
+  color: var(--color-bone-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.match-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.match-last-message {
+  font-size: 0.875rem;
+  color: var(--color-bone-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.unread-badge {
+  flex-shrink: 0;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-blood), var(--color-amethyst));
+  color: var(--color-bone);
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.match-actions {
+  position: relative;
+}
+
+.action-btn {
+  color: var(--color-bone-muted);
+}
+
+.action-btn:hover {
+  color: var(--color-blood-light);
+  background: rgba(122, 31, 43, 0.1);
+}
+
+.action-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--color-charcoal);
+  border: 1px solid rgba(122, 31, 43, 0.3);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card), var(--shadow-glow-blood);
+  overflow: hidden;
+  z-index: 10;
+  min-width: 160px;
+}
+
+.action-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  color: var(--color-bone);
+  font-size: 0.875rem;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+.action-menu-item:hover {
+  background: rgba(122, 31, 43, 0.15);
+  color: var(--color-blood-light);
+}
+
+.action-menu-item.danger {
+  color: var(--color-bone-dim);
+}
+
+.action-menu-item.danger:hover {
+  color: #ef5350;
+  background: rgba(244, 67, 54, 0.15);
+}
+
+@media (max-width: 480px) {
+  .match-item {
+    padding: 0.875rem;
+  }
+  
+  .match-avatar img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .match-name {
+    font-size: 1rem;
+  }
+}
